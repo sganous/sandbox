@@ -1,5 +1,6 @@
 import React from 'react';
 import './tictactoe.css';
+import Button from '@material-ui/core/Button'
 
 function Square(props) {
   return (
@@ -84,14 +85,24 @@ export default class Game extends React.Component {
     const desc = "Undo";
     let lastState = this.state.stepNumber > 0 ? (this.state.stepNumber - 1) : 0;
     return (
-      <button onClick={() => this.jumpTo(lastState)}>{desc}</button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => this.jumpTo(lastState)}>
+        {desc}
+      </Button>
     )
   }
 
   getRestartButton() {
     const desc = "Restart Game";
     return (
-      <button onClick={() => this.jumpTo(0)}>{desc}</button>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => this.jumpTo(0)}>
+        {desc}
+      </Button>
     )
   }
 
@@ -129,7 +140,9 @@ export default class Game extends React.Component {
       </div>
       <div className="game-info">
       <div>{status}</div>
+      <br/>
       <div>{this.getUndoButton()}</div>
+      <br/>
       <div>{this.getRestartButton()}</div>
       </div>
       </div>
